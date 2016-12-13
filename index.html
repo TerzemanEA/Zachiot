@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Конструктор пиццы</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="pizza.js"></script>
+
+
+
+</head>
+<body ng-app="PizzaApp" ng-controller="PizzaConstructor">
+
+<select ng-options="base as base.name for base in bases" ng-model="pizza.base"></select>
+<select ng-options="souce as souce.name for souce in souces" ng-model="pizza.souce"></select>
+<br>
+
+<!--<div ng-repeat="ing in pizza.ingredients">
+{{ing.name}} {{ing.price}}
+    <select ng-options="opt as opt.name for opt in ingredients" ng-model="ing">    pizza.ingredients[$index] </select>
+</div>-->
+
+<div ng-repeat="ing in pizza.ingredients">
+    <input type="number" ng-model="ing.count" min="1" max="5" step="1">
+    <!--{{ing.name}} {{ing.price}} {{$index}}-->
+    Ингридиент {{ing.name}}
+    Цена: {{ing.price}}
+    <button ng-click="RemoveIng(ing)">Удалить</button>
+    <br>
+    <!--Цена: {{pizza.ingredients[$index].price}}-->
+</div>
+<select ng-options="opt as opt.name for opt in ingredients" ng-model="currentIng"></select>
+<button ng-disabled="!currentIng" ng-click="AddIngredient()">Добавить</button>
+
+<h3>{{TotalPrice()}}</h3>
+
+</body>
+</html>
