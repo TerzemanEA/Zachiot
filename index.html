@@ -5,15 +5,21 @@
     <title>Конструктор пиццы</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
     <script src="http://underscorejs.org/underscore-min.js"></script>
-    <script src="pizza.js"></script>
+    <script src="exam.js"></script>
 
 
 
 </head>
-<body ng-app="PizzaApp" ng-controller="PizzaConstructor">
+<body ng-app="KitchenApp" ng-controller="KitchenConstructor">
 
+<h4>Выберите тип столешницы</h4>
 <select ng-options="base as base.name for base in bases" ng-model="pizza.base"></select>
-<select ng-options="souce as souce.name for souce in souces" ng-model="pizza.souce"></select>
+
+<h4>Выберите тип ручек</h4>
+<select ng-options="sh as sh.name for sh in shkaf" ng-model="pizza.shkaf"></select>
+<h4>Выберите тип ножек</h4>
+<select ng-options="no as no.name for no in no" ng-model="pizza.no"></select>
+<br>
 <br>
 
 <!--<div ng-repeat="ing in pizza.ingredients">
@@ -22,9 +28,9 @@
 </div>-->
 
 <div ng-repeat="ing in pizza.ingredients">
-    <input type="number" ng-model="ing.count" min="1" max="5" step="1">
+    <input type="number" ng-model="ing.count" min="1" max="4" step="1">
     <!--{{ing.name}} {{ing.price}} {{$index}}-->
-    Ингридиент {{ing.name}}
+    Вид шкафа {{ing.name}}
     Цена: {{ing.price}}
     <button ng-click="RemoveIng(ing)">Удалить</button>
     <br>
@@ -32,6 +38,23 @@
 </div>
 <select ng-options="opt as opt.name for opt in ingredients" ng-model="currentIng"></select>
 <button ng-disabled="!currentIng" ng-click="AddIngredient()">Добавить</button>
+
+
+<!--ghfdfgfeg-->
+
+<!--<div ng-repeat="ing1 in pizza.shkaf">
+    <input type="number" ng-model="ing1.count" min="1" max="3" step="1">
+    <!--{{ing.name}} {{ing.price}} {{$index}}-->
+<!--Тип ручки к шкафам {{ing1.name}}
+Цена: {{ing1.price}}
+<button ng-click="RemoveIng1(ing1)">Удалить</button>
+<br>-->
+    <!--Цена: {{pizza.ingredients[$index].price}}-->
+<!--</div>
+
+<select ng-options="opt as opt.name for opt in shkaf" ng-model="currentIng1"></select>
+<button ng-disabled="!currentIng1" ng-click="AddSh()">Добавить</button>-->
+<!--<br><button ng-click="num()">Рассчёт</button>-->
 
 <h3>{{TotalPrice()}}</h3>
 
